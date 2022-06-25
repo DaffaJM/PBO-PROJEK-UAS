@@ -1,0 +1,50 @@
+create table akun
+(
+	id_akun serial primary key,
+	username varchar(50) not null,
+	nama varchar(255) not null,
+	password varchar(50) not null,
+	no_hp varchar(20) not null,
+	jabatan varchar(50) not null,
+	gaji_pokok bigint not null
+);
+
+create table absen 
+(
+	id_absen serial primary key,
+	akun_id int not null,
+	tanggal varchar(50) not null,
+	jam_awal varchar(50) not null,
+	jam_akhir varchar(50) not null,
+	status varchar(50) not null
+);
+
+create table ket_absen
+(
+	id_ket_absen serial primary key,
+	absen_id int not null,
+	
+	kehadiran int not null
+);
+
+
+-- akun
+insert into akun values(1, 'admin', 'Admin Sistem','admin','085235491457', 'admin', 50000);
+insert into akun values(2, 'karyawan1', 'Budi Setiaone','karyawan1', '081234123987', 'karyawan',  50000);
+insert into akun values(3, 'karyawan2', 'Alek Petir','karyawan2', '081086256218', 'karyawan', 50000);
+insert into akun values(4, 'karyawan3', 'Daffa M','karyawan3', '082458109532', 'karyawan', 50000);
+
+-- absen
+insert into absen values(1, 2,'2022-02-02', '07:00', '16:00','Hadir');
+insert into absen values(2, 3,'2022-02-02', '07:00', '16:00', 'Tidak Hadir');
+insert into absen values(3, 4,'2022-02-02', '07:00', '16:00','Tidak Hadir');
+
+-- ket_absen
+insert into ket_absen values(1, 1, 5);
+insert into ket_absen values(2, 2, 5);
+insert into ket_absen values(3, 3, 5);
+
+
+drop table akun cascade;
+drop table absen cascade;
+drop table ket_absen cascade;
